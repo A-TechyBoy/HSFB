@@ -1,200 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>HSFB - High Seas for Beginners</title>
-		<style>
-			@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSFB - High Seas for Beginners</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap");
 
-			body {
-				background-color: #101010;
-				font-family: "Space Grotesk", serif;
-				font-weight: 300;
-				color: aliceblue;
-				margin: 0;
-				padding: 0;
-			}
+        :root {
+            --bg-primary: #101010;
+            --bg-secondary: #1a1a1a;
+            --bg-hover: #292929;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --accent: #3498db;
+        }
 
-			.centerMePls {
-				text-align: center;
-				margin: 20px 0;
-			}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-			h1 {
-				font-size: 2.5rem;
-				margin-bottom: 10px;
-			}
+        body {
+            background-color: var(--bg-primary);
+            font-family: "Space Grotesk", sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
 
-			h2 {
-				font-size: 1.5rem;
-				color: #ccc;
-			}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
 
-			#cards {
-				display: grid;
-				gap: 20px;
-				padding: 20px;
-				width: 90%;
-				margin: 0 auto;
-				grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
-				grid-auto-rows: minmax(25vh, auto);
-				justify-items: center;
-			}
+        .header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), var(--bg-primary)),
+                        url('/api/placeholder/1200/300');
+            background-size: cover;
+            background-position: center;
+        }
 
-			.card {
-				background-color: #1a1a1a;
-				color: aliceblue;
-				border-radius: 10px;
-				padding: 20px;
-				text-align: center;
-				font-size: 1.2rem;
-				font-weight: 500;
-				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
-				width: 100%;
-				max-width: 25vw;
-			}
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
 
-			.card:hover {
-				transform: scale(1.05);
-				box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
-				background-color: #292929;
-			}
+        .header h2 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
 
-			h3 {
-				margin: 0;
-				padding: 0;
-			}
+        .cards-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            padding: 2rem 1rem;
+        }
 
-			a {
-				color: aliceblue;
-				text-decoration: none;
-			}
+        .card {
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
 
-			a:hover {
-				text-decoration: underline;
-			}
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--bg-hover);
+        }
 
-			li {
-				margin: 10px 0;
-				text-align: left;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="centerMePls">
-			<h1>HSFB - High Seas for Beginners</h1>
-			<h2>Information for new HighSeas hackers</h2>
-		</div>
-		<div id="cards">
-			<div class="card">
-				<h3>0. I am stuck in Shop/Shipyard what do i do.</h3>
-                TRY TO DELETE COCKIES IF DOSINT WORK THEN CHECK BELLOW
-                <h4>Shop</h4>
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .card h4 {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+        }
+
+        .card ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        .card li {
+            margin: 0.8rem 0;
+        }
+
+        .card li ul {
+            padding-left: 2rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: var(--bg-secondary);
+            margin-top: 3rem;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .cards-grid {
+                gap: 1rem;
+                padding: 1rem 0.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>HSFB - High Seas for Beginners</h1>
+        <h2>Information for new HighSeas hackers</h2>
+    </header>
+
+    <main class="container">
+        <div class="cards-grid">
+            <div class="card">
+                <h3>1. Stuck in Shop/Shipyard?</h3>
+                <p>First try clearing your cookies. If that doesn't work:</p>
+                
+                <h4>Shop Issue</h4>
                 <ul>
-                    <li>open the "<a href="https://forms.hackclub.com/eligibility?program=High%20Seas" target="_blank">Verification Link</a>" and reverify</li>
+                    <li>Re-verify through the <a href="https://forms.hackclub.com/eligibility?program=High%20Seas" target="_blank">Verification Link</a></li>
                 </ul>
-                <h4>Shipyard</h4>
+
+                <h4>Shipyard Issue</h4>
                 <ul>
-                    <li>open "<a href="https://waka.hackclub.com/" target="_blank">hackatime</a>" and setup hackatime</li>
-			</div>
-			<div class="card">
-				<h3>1. What are Curses and Blessings?</h3>
-				<h4>Curses:</h4>
-				<ul>
-					<li>50% fewer doubloons.</li>
-					<li>
-						Obtained by voting just to complete the task or avoiding
-						voting by using dots to complete 10 words.
-					</li>
-				</ul>
-				<h4>Blessings:</h4>
-				<ul>
-					<li>20% more doubloons.</li>
-					<li>
-						Obtained by voting and providing extra information, such
-						as suggestions for improvement or offering more
-						insightful votes.
-					</li>
-				</ul>
-			</div>
-			<div class="card">
-				<h3>2. Tracking the Link</h3>
-				<ul>
-					<li>
-						The
-						<a
-							target="_blank"
-							href="https://shipment-viewer.hackclub.com/"
-							>Shipment Viewer</a
-						>
-						will show everything that is on its way to you from
-						hackclub's warehouse with tracking links if they are
-						available.
-					</li>
-					<li>
-						Anything ordered on your behalf from a different vendor
-						will not show up here. However, it is not always there,
-						so if you're not lucky, the best you can do is wait 😔.
-					</li>
-				</ul>
-			</div>
-			<div class="card">
-				<h3>3. What Does Hackatime Collect?</h3>
-				<ul>
-					<li>
-						Refer to Wakatime's privacy policy:
-						<a
-							target="_blank"
-							href="https://wakatime.com/legal/privacy-policy"
-							>wakatime.com/legal/privacy-policy</a
-						>.
-					</li>
-					<li>
-						Hackatime is a custom fork of Wakatime; therefore, we
-						can refer to Wakatime's policies.
-					</li>
-					<li>
-						According to the "Plugin Usage Content" section, it
-						collects various data but not the source code. Refer to
-						the page for full information.
-					</li>
-				</ul>
-			</div>
-			<div class="card">
-				<h3>4. I don't use VS Code what do i do</h3>
-				<ul>
-					<li>
-						Go To
-						<a href="https://wakatime.com/plugins" target="_blank"
-							>wakatime.com/plugins</a
-						>
-					</li>
-					<li>install the plugin based on your editor</li>
-					<li>
-						Go To highseas > signPost > Show Hackatime install
-						instructions > Not using windows? View instructions for
-						all platforms > Script not working? High Seas is
-						wakatime-compatible, so you can configure wakatime
-						plugins using the following > coppy the config
-					</li>
-					<li>
-						Replace the wakatime config in ur ide with the hackatime
-						config
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="centerMePls">
-			<p>
-				Coded by <a href="https://atb.quest">A_Techyboy</a> and improved
-				by
-				<a href="https://github.com/The-UnknownHacker"
-					>The-UnknownHacker</a
-				>
-				for HighSeas.
-			</p>
-		</div>
-	</body>
+                    <li>Set up <a href="https://waka.hackclub.com/" target="_blank">hackatime</a></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>2. Curses and Blessings Explained</h3>
+                <h4>Curses (-50% doubloons)</h4>
+                <ul>
+                    <li>Given for minimal effort votes or using dots to reach word count</li>
+                </ul>
+
+                <h4>Blessings (+20% doubloons)</h4>
+                <ul>
+                    <li>Earned through detailed votes with suggestions and insights</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>3. Track Your Shipment</h3>
+                <ul>
+                    <li>Check the <a href="https://shipment-viewer.hackclub.com/" target="_blank">Shipment Viewer</a> for items shipped from HackClub's warehouse</li>
+                    <li>Note: Items from other vendors won't appear here</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>4. Hackatime Data Collection</h3>
+                <ul>
+                    <li>Based on <a href="https://wakatime.com/legal/privacy-policy" target="_blank">Wakatime's privacy policy</a></li>
+                    <li>Collects usage data but not source code</li>
+                    <li>See policy for complete details</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>5. Non-VS Code Setup</h3>
+                <ul>
+                    <li>Visit <a href="https://wakatime.com/plugins" target="_blank">wakatime.com/plugins</a></li>
+                    <li>Install your editor's plugin</li>
+                    <li>Get Hackatime config from: HighSeas → SignPost → Hackatime instructions</li>
+                    <li>Replace Wakatime config with Hackatime config in your editor</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>6. Doubloon Calculations</h3>
+                <ul>
+                    <li>Based on project hours and ranking against similar projects</li>
+                    <li>Average rates per hour:
+                        <ul>
+                            <li>Normal: 5-25 doubloons</li>
+                            <li>With curse: 2.5-12.5 doubloons</li>
+                            <li>With blessing: 6-30 doubloons</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Found something missing or incorrect? Contact <a href="https://hackclub.slack.com/team/U082KMLM7DW" target="_blank">@A_Techyboy</a> on HackClub Slack or contribute on <a href="https://github.com/A-Techyboy/HSFB" target="_blank">GitHub</a>.</p>
+        <p>Created by <a href="https://atb.quest">A_Techyboy</a> and improved by <a href="https://github.com/The-UnknownHacker">The-UnknownHacker</a> for HighSeas.</p>
+    </footer>
+</body>
 </html>
